@@ -5,6 +5,7 @@ colorama==0.4.6
 cssbeautifier==1.14.7
 dj-database-url==1.0.0
 Django==4.1.1
+django-widget-tweaks==1.4.12
 djlint==1.19.7
 EditorConfig==0.12.3
 html-tag-names==0.1.2
