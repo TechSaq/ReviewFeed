@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'reviewfeed.db',
+        'NAME': BASE_DIR/'reviewfeed.db',
     }
 }
 
