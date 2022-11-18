@@ -1,0 +1,92 @@
+{% load static %}
+<header class="header-v4">
+  <div class="container-menu-desktop">
+    <!-- Topbar -->
+    <div class="top-bar">
+      <div class="content-topbar flex-sb-m h-full container">
+        <div class="left-top-bar">Know the product before purchasing</div>
+        <div class="right-top-bar flex-w h-full">
+          <a href="#" class="flex-c-m trans-04 p-lr-25">Help & FAQs</a>
+          <a href="#" class="flex-c-m trans-04 p-lr-25">EN</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-menu-desktop how-shadow1">
+      <nav class="limiter-menu-desktop container">
+        <!-- Logo desktop -->
+        <a href="{% url 'item:home' %}" class="logo">
+          <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+        </a>
+        <!-- Menu desktop -->
+        <div class="menu-desktop">
+          <ul class="main-menu">
+            <li class="active-menu">
+              <a href="{% url 'item:home' %}">Home</a>
+            </li>
+            <li>
+              <a href="{% url 'item:about' %}">About</a>
+            </li>
+            <li>
+              <a href="{% url 'item:contact' %}">Contact</a>
+            </li>
+          </ul>
+        </div>
+        {% if not request.user.is_authenticated %}
+          <div style="display: flex">
+            <a href="{% url 'account:login' %}"
+               class="flex-c-m stext-101 cl0 size-121 bg1 bor1 hov-btn3 p-lr-15 trans-04 pointer">Login</a>
+            <a href="{% url 'account:register' %}"
+               class="flex-c-m stext-101 cl1 size-121 bg0 bor1 hov-btn3 p-lr-15 trans-04 pointer">Register</a>
+          </div>
+        {% else %}
+          <div style="display: flex; justify-content: center; align-items: center">
+            <a href="{% url 'account:login' %}" class="stext-101 p-lr-15">{{ request.user.username }}</a>
+            <a href="{% url 'account:logout' %}"
+               class="flex-c-m stext-101 cl1 size-121 bg0 bor1 hov-btn3 p-lr-15 trans-04 pointer">Logout</a>
+          </div>
+        {% endif %}
+      </nav>
+    </div>
+  </div>
+  <!-- Header Mobile -->
+  <div class="wrap-header-mobile">
+    <!-- Logo moblie -->
+    <div class="logo-mobile">
+      <a href="index.html">
+        <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
+      </a>
+    </div>
+    <!-- Button show menu -->
+    <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </div>
+  </div>
+  <!-- Menu Mobile -->
+  <div class="menu-mobile">
+    <ul class="topbar-mobile">
+      <li>
+        <div class="left-top-bar">Know the product before purchasing</div>
+      </li>
+      <li>
+        <div class="right-top-bar flex-w h-full">
+          <a href="{% url 'item:about' %}" class="flex-c-m p-lr-10 trans-04">Help & FAQs</a>
+          {% comment %} <a href="#" class="flex-c-m p-lr-10 trans-04">My Account</a> {% endcomment %}
+          <a href="#" class="flex-c-m p-lr-10 trans-04">EN</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="main-menu-m">
+      <li>
+        <a href="{% url 'item:home' %}">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'item:about' %}">About</a>
+      </li>
+      <li>
+        <a href="{% url 'item:contact' %}">Contact</a>
+      </li>
+    </ul>
+  </div>
+</header>

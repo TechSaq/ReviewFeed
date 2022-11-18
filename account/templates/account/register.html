@@ -1,0 +1,54 @@
+{% extends "common/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+  <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+           style="background-image: url({% static 'images/rating_1.jpg' %})">
+    <h2 class="ltext-105 cl5 txt-center">Register</h2>
+  </section>
+  <!-- Content page -->
+  <section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+      <div class="flex-w flex-tr">
+        <div class="bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full">
+          <form method="post" action="{% url 'account:register' %}">
+            {% csrf_token %}
+            <h4 class="mtext-105 cl2 txt-center p-b-30">Register</h4>
+            <div class="p-3 p-lg-5">
+              {{ form.non_field_errors }}
+              {% for field in form %}
+                <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="c_email" class="text-black">{{ field.label_tag }}</label>
+                    {% if form.is_bound %}
+                      {% if field.errors %}
+                        {% render_field field class="form-control is-invalid" %}
+                        {% for error in field.errors %}<div class="invalid-feedback">{{ error }}</div>{% endfor %}
+                      {% else %}
+                        {% render_field field class="form-control is-valid" %}
+                      {% endif %}
+                    {% else %}
+                      {% render_field field class="form-control" %}
+                    {% endif %}
+                    {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+                  </div>
+                </div>
+              {% endfor %}
+              <div class="form-group row">
+                <div class="col-lg-12 mt-5">
+                  <input type="submit"
+                         value="Register"
+                         class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"/>
+                  <p class="col-lg-12 mt-3 text-center">
+                    Already have an account?
+                    <a href="{% url 'account:login' %}" target="_blank" class="text-primary">Log in</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
